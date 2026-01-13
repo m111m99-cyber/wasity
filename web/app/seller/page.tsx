@@ -1,13 +1,12 @@
-﻿export default function SellerPage() {
+﻿import Shell from "../../components/Shell";
+
+export default function SellerPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-10">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Seller Dashboard</h1>
-          <a className="rounded-2xl border px-4 py-2 text-sm hover:bg-zinc-50" href="/">Home</a>
-        </div>
-        <p className="mt-2 text-sm text-zinc-600">Listings • Orders • Payouts • Analytics</p>
+    <Shell title="لوحة البائع" subtitle="إدارة المنتجات والطلبات">
+      <div className="rounded-2xl glass-panel p-6">
+        <h2 className="text-2xl font-semibold">مرحبا بالبائع</h2>
+        <p className="mt-3 text-zinc-200/80">قوائم المنتجات • الطلبات • التحصيلات • التقارير</p>
       </div>
-    </main>
+    </Shell>
   );
 }
