@@ -1,0 +1,274 @@
+diff --git a/app/layout.tsx b/app/layout.tsx
+new file mode 100644
+index 0000000..f4b5a2a
+--- /dev/null
++++ b/app/layout.tsx
+@@ -0,0 +1,41 @@
++import type { Metadata } from "next";
++import { Tajawal } from "next/font/google";
++import "./globals.css";
++
++const tajawal = Tajawal({
++  subsets: ["arabic"],
++  weight: ["200", "300", "400", "500", "700", "800", "900"],
++  display: "swap",
++});
++
++export const metadata: Metadata = {
++  title: "????? | WASITY",
++  description: "???? ??? ???? ?????? ?????? ???????? ????????? ???? ?????.",
++};
++
++export default function RootLayout({
++  children,
++}: Readonly<{
++  children: React.ReactNode;
++}>) {
++  return (
++    <html lang="ar" dir="rtl">
++      <body className={tajawal.className}>
++        {children}
++      </body>
++    </html>
++  );
++}
+diff --git a/app/page.tsx b/app/page.tsx
+new file mode 100644
+index 0000000..2c0a8d1
+--- /dev/null
++++ b/app/page.tsx
+@@ -0,0 +1,208 @@
++import Link from "next/link";
++
++const roles = [
++  {
++    title: "???????",
++    desc: "????? ????? ???? ?????? ????? ???? ??? ??????.",
++    href: "/buyer",
++    chip: "???? ???",
++    icon: (
++      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
++        <path d="M7 7h10l-1 11H8L7 7Z" stroke="currentColor" strokeWidth="1.5" />
++        <path d="M9 7a3 3 0 0 1 6 0" stroke="currentColor" strokeWidth="1.5" />
++      </svg>
++    ),
++  },
++  {
++    title: "??????",
++    desc: "??? ???????? ????????? ????? ??????? ??????????.",
++    href: "/seller",
++    chip: "????? ??????",
++    icon: (
++      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
++        <path d="M4 7h16v13H4V7Z" stroke="currentColor" strokeWidth="1.5" />
++        <path d="M8 4h8v3H8V4Z" stroke="currentColor" strokeWidth="1.5" />
++        <path d="M7 11h10M7 15h7" stroke="currentColor" strokeWidth="1.5" />
++      </svg>
++    ),
++  },
++  {
++    title: "???? ???????",
++    desc: "?????? ?????? ???? ????? ?? ??????? ???????.",
++    href: "/courier",
++    chip: "???? ????",
++    icon: (
++      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
++        <path d="M3 16V7h11v9H3Z" stroke="currentColor" strokeWidth="1.5" />
++        <path d="M14 10h4l3 3v3h-7v-6Z" stroke="currentColor" strokeWidth="1.5" />
++        <path d="M7 19a1.5 1.5 0 1 0 0 .01V19ZM18 19a1.5 1.5 0 1 0 0 .01V19Z" stroke="currentColor" strokeWidth="1.5" />
++      </svg>
++    ),
++  },
++  {
++    title: "??????",
++    desc: "????? ??????? ?????? ???????? ?????? ????????.",
++    href: "/admin",
++    chip: "?????",
++    icon: (
++      <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
++        <path d="M12 3 4 6v6c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10V6l-8-3Z" stroke="currentColor" strokeWidth="1.5" />
++        <path d="M9 12l2 2 4-5" stroke="currentColor" strokeWidth="1.5" />
++      </svg>
++    ),
++  },
++];
++
++export default function Home() {
++  return (
++    <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
++      {/* Background glow blobs */}
++      <div className="pointer-events-none absolute inset-0">
++        <div className="absolute -top-24 right-10 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-[90px]" />
++        <div className="absolute top-40 left-10 h-80 w-80 rounded-full bg-sky-400/20 blur-[110px]" />
++        <div className="absolute bottom-0 right-1/3 h-96 w-96 rounded-full bg-emerald-400/10 blur-[120px]" />
++        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_55%)]" />
++        <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:48px_48px]" />
++      </div>
++
++      {/* Content */}
++      <div className="relative mx-auto max-w-6xl px-6 py-12">
++        <header className="flex flex-col items-start gap-4">
++          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 shadow-lg backdrop-blur">
++            <span className="text-lg font-extrabold tracking-wide">?????</span>
++            <span className="text-xs text-white/70">WASITY</span>
++            <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-semibold text-emerald-200">
++              ???? ???
++            </span>
++          </div>
++
++          <h1 className="mt-2 text-4xl font-extrabold leading-tight md:text-5xl">
++            ???? ???? ????? ???????
++          </h1>
++          <p className="max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
++            ???? ???? ??? <b className="text-white/90">??????</b> ?<b className="text-white/90">?????</b> ?<b className="text-white/90">???????</b> ?<b className="text-white/90">????????</b> ?? ??? ????? ???? - ???? ?????.
++          </p>
++        </header>
++
++        <section className="mt-10 grid gap-4 md:grid-cols-2">
++          {roles.map((r) => (
++            <Link
++              key={r.href}
++              href={r.href}
++              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur transition hover:-translate-y-1 hover:border-white/20"
++            >
++              {/* hover shine */}
++              <div className="pointer-events-none absolute -inset-24 opacity-0 transition group-hover:opacity-100">
++                <div className="absolute left-0 top-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
++              </div>
++
++              <div className="flex items-start justify-between gap-4">
++                <div>
++                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/80">
++                    <span className="text-emerald-200">?</span>
++                    {r.chip}
++                  </div>
++                  <h2 className="mt-3 text-2xl font-bold">{r.title}</h2>
++                  <p className="mt-2 text-sm leading-relaxed text-white/70">{r.desc}</p>
++                </div>
++
++                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-black/20 text-white/80 transition group-hover:scale-105 group-hover:text-white">
++                  {r.icon}
++                </div>
++              </div>
++
++              <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition group-hover:text-white">
++                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-2">
++                  ??????
++                </span>
++                <span className="text-white/40"></span>
++              </div>
++            </Link>
++          ))}
++        </section>
++
++        <footer className="mt-10 text-sm text-white/50">
++          ?????: ???? ?????? ??? ???????? ????? ????????? ?
++        </footer>
++      </div>
++    </main>
++  );
++}
+diff --git a/app/buyer/page.tsx b/app/buyer/page.tsx
+new file mode 100644
+index 0000000..c01e1d2
+--- /dev/null
++++ b/app/buyer/page.tsx
+@@ -0,0 +1,33 @@
++import Link from "next/link";
++
++export default function BuyerPage() {
++  return (
++    <main className="min-h-screen bg-slate-950 text-white px-6 py-16">
++      <section className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl">
++        <h1 className="text-3xl font-extrabold">???? ???????</h1>
++        <p className="mt-3 text-white/70">
++          ??? ????? ??????: ???????? ?????? ???? ?????? ???? ????????.
++        </p>
++        <Link
++          className="mt-8 inline-flex rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold hover:bg-white/10"
++          href="/"
++        >
++          ?????? ????????
++        </Link>
++      </section>
++    </main>
++  );
++}
+diff --git a/app/seller/page.tsx b/app/seller/page.tsx
+new file mode 100644
+index 0000000..eaa11c0
+--- /dev/null
++++ b/app/seller/page.tsx
+@@ -0,0 +1,33 @@
++import Link from "next/link";
++
++export default function SellerPage() {
++  return (
++    <main className="min-h-screen bg-slate-950 text-white px-6 py-16">
++      <section className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl">
++        <h1 className="text-3xl font-extrabold">???? ??????</h1>
++        <p className="mt-3 text-white/70">
++          ??? ????? ??????: ????????? ???????? ???????? ??????????.
++        </p>
++        <Link
++          className="mt-8 inline-flex rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold hover:bg-white/10"
++          href="/"
++        >
++          ?????? ????????
++        </Link>
++      </section>
++    </main>
++  );
++}
+diff --git a/app/courier/page.tsx b/app/courier/page.tsx
+new file mode 100644
+index 0000000..51f2a39
+--- /dev/null
++++ b/app/courier/page.tsx
+@@ -0,0 +1,33 @@
++import Link from "next/link";
++
++export default function CourierPage() {
++  return (
++    <main className="min-h-screen bg-slate-950 text-white px-6 py-16">
++      <section className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl">
++        <h1 className="text-3xl font-extrabold">???? ???? ???????</h1>
++        <p className="mt-3 text-white/70">
++          ??? ????? ??????: ???????? ???????? ?????????? ??????? ???????.
++        </p>
++        <Link
++          className="mt-8 inline-flex rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold hover:bg-white/10"
++          href="/"
++        >
++          ?????? ????????
++        </Link>
++      </section>
++    </main>
++  );
++}
+diff --git a/app/admin/page.tsx b/app/admin/page.tsx
+new file mode 100644
+index 0000000..b0e2ad5
+--- /dev/null
++++ b/app/admin/page.tsx
+@@ -0,0 +1,20 @@
++import Link from "next/link";
++
++export default function AdminPage() {
++  return (
++    <main className="flex min-h-screen items-center justify-center px-6 py-16 bg-slate-950 text-white">
++      <section className="w-full max-w-3xl rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-10 text-center shadow-2xl">
++        <h1 className="text-3xl font-bold text-white sm:text-4xl">???? ??????</h1>
++        <p className="mt-4 text-base text-slate-200 sm:text-lg">
++          ???? ?????? ???? ????? ??? ??????? ??????.
++        </p>
++        <Link
++          href="/"
++          className="mt-8 inline-flex items-center justify-center rounded-full border border-violet-300/40 px-6 py-3 text-sm font-semibold text-violet-100 transition hover:border-violet-200 hover:bg-violet-400/10"
++        >
++          ?????? ????????
++        </Link>
++      </section>
++    </main>
++  );
++}
