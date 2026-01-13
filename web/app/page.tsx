@@ -37,7 +37,7 @@ function RoleCard({ href, title, desc, icon, pill }: RoleCardProps) {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={{ transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
-      className="group relative overflow-hidden rounded-3xl bg-white/8 p-8 ring-1 ring-white/12 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)] transition-transform duration-200 hover:bg-white/12 hover:-translate-y-2 hover:shadow-[0_40px_100px_-45px_rgba(0,0,0,0.9)] role-card-large"
+      className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm p-6 md:p-8 ring-0 shadow-sm transition-transform duration-200 hover:bg-white/6 hover:-translate-y-[0.125rem] hover:border-white/20 role-card-large"
     >
       <Link href={href} className="absolute inset-0 z-10" aria-label={title} />
 
@@ -48,11 +48,11 @@ function RoleCard({ href, title, desc, icon, pill }: RoleCardProps) {
 
       <div className="relative z-0">
         <div className="flex items-start justify-between gap-4">
-          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/8 ring-1 ring-white/12 shadow-sm">
+          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/6 ring-1 ring-white/12 shadow-sm">
             <span className="text-3xl">{icon}</span>
           </div>
 
-          <span className="rounded-full bg-black/18 px-3 py-1 text-xs text-zinc-50 ring-1 ring-white/8">
+          <span className="role-chip inline-flex items-center justify-center rounded-full bg-white/6 px-3 py-1 text-xs text-zinc-900 ring-1 ring-white/8">
             {pill}
           </span>
         </div>
@@ -61,7 +61,7 @@ function RoleCard({ href, title, desc, icon, pill }: RoleCardProps) {
         <p className="mt-2 text-base leading-7 text-zinc-100">{desc}</p>
 
         <div className="mt-6 inline-flex items-center gap-3 text-sm font-semibold">
-          <span className="rounded-2xl bg-emerald-600/10 px-4 py-2 ring-1 ring-emerald-600/20 transition group-hover:bg-emerald-600/15">
+          <span className="btn-cta inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 px-4 py-2 text-sm font-semibold text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60">
             فتح لوحة التحكم
           </span>
           <span className="opacity-70 transition">←</span>

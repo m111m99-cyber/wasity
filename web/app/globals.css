@@ -38,3 +38,13 @@ body {
 body {
   color: #eef2ff;
 }
+
+/* small helper for consistent role chips and CTA focus
+   keep chips from visually overlapping and ensure spacing */
+.role-chip {
+  min-width: 56px;
+}
+
+.btn-cta {
+  -webkit-tap-highlight-color: transparent;
+}
