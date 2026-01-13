@@ -52,13 +52,13 @@ function RoleCard({ href, title, desc, icon, pill }: RoleCardProps) {
             <span className="text-3xl">{icon}</span>
           </div>
 
-          <span className="rounded-full bg-black/18 px-3 py-1 text-xs text-zinc-200 ring-1 ring-white/8">
+          <span className="rounded-full bg-black/18 px-3 py-1 text-xs text-zinc-50 ring-1 ring-white/8">
             {pill}
           </span>
         </div>
 
-        <h3 className="mt-5 text-2xl font-semibold tracking-tight">{title}</h3>
-        <p className="mt-2 text-base leading-7 text-zinc-200/85">{desc}</p>
+        <h3 className="mt-5 text-2xl font-semibold tracking-tight text-white">{title}</h3>
+        <p className="mt-2 text-base leading-7 text-zinc-100">{desc}</p>
 
         <div className="mt-6 inline-flex items-center gap-3 text-sm font-semibold">
           <span className="rounded-2xl bg-emerald-600/10 px-4 py-2 ring-1 ring-emerald-600/20 transition group-hover:bg-emerald-600/15">
@@ -87,7 +87,7 @@ export default function Home() {
               وسيطي
             </h1>
 
-            <p className="mt-3 max-w-2xl text-lg leading-8 text-zinc-200/85">
+            <p className="mt-3 max-w-2xl text-lg leading-8 text-zinc-100">
               بوابة موحّدة لإدارة الطلبات، الشحن، والدفع — لكلٍّ من المشتري، البائع،
               وشركات التوصيل.
             </p>
@@ -141,7 +141,7 @@ export default function Home() {
 
       {/* Footer note */}
       <div className="mt-8 rounded-3xl bg-black/25 p-6 ring-1 ring-white/10">
-        <p className="text-sm leading-7 text-zinc-200/80">
+        <p className="text-sm leading-7 text-zinc-100">
           ملاحظة: بنحافظ على هذا الأسلوب كـ “ثيم موحّد”، وبعدها نبدأ نطوّر كل دور
           صفحة صفحة بنفس الهوية البصرية.
         </p>

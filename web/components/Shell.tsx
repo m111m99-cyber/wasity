@@ -9,14 +9,14 @@ type ShellProps = {
 export default function Shell({ title, subtitle, children }: ShellProps) {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* Background (ensure it's behind content) */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-indigo-500/20 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-fuchsia-500/15 blur-3xl" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 py-10">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-10">
         {/* Top bar */}
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
